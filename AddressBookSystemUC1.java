@@ -13,6 +13,7 @@ public class AddressBookSystemUC1 extends ContactPerson1 {
 	}
 	public static AddressBookSystemUC1 newPerson = new AddressBookSystemUC1(address, address, address, address, address, zip, address, address);
 	public static ArrayList<ContactPerson1> person = new ArrayList<>();
+	//UC2 add new contact to address book
 	public static void add(){
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Enter first name");
@@ -40,6 +41,77 @@ public class AddressBookSystemUC1 extends ContactPerson1 {
 		// TODO Auto-generated method stub
 
 	}
+	// edit existing contact person by name
+	public static void modify(){
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Enter the first name whose contact to be edited");
+		String name = scanner.nextLine();
+		boolean found=false;
+		ListIterator<ContactPerson1> iterator = person.listIterator();
+		while (iterator.hasNext()){
+			ContactPerson1 contact= iterator.next();
+			if (name.equals(contact.getFirstName()))
+			{
+				System.out.println("Edit first name");
+				newPerson.setFirstName(scanner.nextLine());
+				System.out.println("Edit last name");
+				newPerson.setLastName(scanner.nextLine());
+				System.out.println("Edit address");
+				newPerson.setAddress(scanner.nextLine());
+				System.out.println("Edit city");
+				newPerson.setCity(scanner.nextLine());
+				System.out.println("Edit state");
+				newPerson.setState(scanner.nextLine());
+				System.out.println("Edit zip code");
+				newPerson.setZip(scanner.nextLine());
+				System.out.println("Edit phone number");
+				newPerson.setPhoneNumber(scanner.nextLine());
+				System.out.println("Edit Email");
+				newPerson.setEmail(scanner.nextLine());
+				iterator.set(new ContactPerson1(newPerson.getFirstName(),newPerson.getLastName(), newPerson.getAddress(), newPerson.getCity(), newPerson.getState(), newPerson.getZip(), newPerson.getPhoneNumber(),newPerson.getEmail()));
+				found=true;
+			}
+		}
+	}
+	//delete a person using person name
+	public static void delete(){
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Enter the first name whose contact to be edited");
+		String name = scanner.nextLine();
+		boolean found=false;
+		ListIterator<ContactPerson1> iterator = person.listIterator();
+		while (iterator.hasNext()){
+			ContactPerson1 contact= iterator.next();
+			if (name.equals(contact.getFirstName()))
+			{
+				System.out.println("Edit first name");
+				newPerson.setFirstName(scanner.nextLine());
+				System.out.println("Edit last name");
+				newPerson.setLastName(scanner.nextLine());
+				System.out.println("Edit address");
+				newPerson.setAddress(scanner.nextLine());
+				System.out.println("Edit city");
+				newPerson.setCity(scanner.nextLine());
+				System.out.println("Edit state");
+				newPerson.setState(scanner.nextLine());
+				System.out.println("Edit zip code");
+				newPerson.setZip(scanner.nextLine());
+				System.out.println("Edit phone number");
+				newPerson.setPhoneNumber(scanner.nextLine());
+				System.out.println("Edit Email");
+				newPerson.setEmail(scanner.nextLine());
+				iterator.set(new ContactPerson1(newPerson.getFirstName(),newPerson.getLastName(), newPerson.getAddress(), newPerson.getCity(), newPerson.getState(), newPerson.getZip(), newPerson.getPhoneNumber(),newPerson.getEmail()));
+				found=true;
+			}
+
+		}
+		if (found){
+			System.out.println("record is update");
+			System.out.println(person);
+		}else {
+			System.out.println("record not found");
+		}
+	}
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		int flag = 0;
@@ -53,7 +125,19 @@ public class AddressBookSystemUC1 extends ContactPerson1 {
 			System.out.println("Enter 40 to exit");
 			choice = scanner.nextInt();
 			scanner.nextLine();
-			//
+			if (choice == 10) {
+				add();
+			}
+			else if (choice == 20) {
+				modify();
+			} else if (choice==30) {
+				delete();
+			} else if (choice == 40) {
+				flag = 1;
+			}
 		}
+
+
+
 	}
 }
